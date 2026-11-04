@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark"><meta name="robots" content="noindex,nofollow">
+  <title>Observable · Roften</title><link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+<header><a class="brand" href="/">◉ <strong>Observable</strong><span>ROFTEN</span></a><span class="badge">Minecraft · 1.21.1</span></header>
+<main>
+  <div class="heading"><div><p class="eyebrow">ПРОФИЛЬ ПРОИЗВОДИТЕЛЬНОСТИ</p><h1>Что занимает время тика</h1><p id="status" role="status">Откройте ссылку на замер или выберите сохранённый файл.</p></div><label class="button" for="file">Открыть файл<input id="file" type="file" accept=".json,.gz,application/json,application/gzip"></label></div>
+  <div id="error" role="alert" hidden></div>
+  <section class="metrics" aria-label="Сводка"><article><span>Записей</span><strong id="entries">—</strong></article><article><span>Длительность</span><strong id="ticks">—</strong></article><article><span>Учтённая нагрузка</span><strong id="load">—</strong><small>среднее за тик замера</small></article><article><span>Измерений</span><strong id="dimensions">—</strong></article></section>
+  <section class="workspace">
+    <div class="tabs" role="group" aria-label="Разделы"><button class="active" data-tab="entries">Блоки и сущности</button><button data-tab="traces">Стек сервера</button><button data-tab="diagnostics">Диагностика</button><a id="download" hidden>Скачать исходник ↓</a></div>
+    <div id="entries-panel">
+      <div class="filters"><input id="search" type="search" placeholder="Поиск по моду, типу или координатам" aria-label="Поиск"><select id="kind" aria-label="Вид"><option value="all">Все записи</option><option value="blocks">Блоки</option><option value="entities">Сущности</option></select><select id="dimension" aria-label="Измерение"><option value="all">Все измерения</option></select><select id="sort" aria-label="Сортировка"><option value="load">По нагрузке за тик замера</option><option value="rate">По времени вызова</option><option value="ticks">По числу вызовов</option></select></div>
+      <p class="hint">Время вызова — среднее время обработки объекта. Нагрузка за тик замера учитывает число его вызовов. Выберите строку, чтобы открыть стек.</p>
+      <div class="table-wrap"><table><thead><tr><th>Тип / объект</th><th>Измерение</th><th>Координаты</th><th>Время вызова</th><th>Нагрузка / тик</th><th>Вызовов</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="empty">Профиль ещё не открыт</td></tr></tbody></table></div>
+      <div class="pagination"><span id="count">0 записей</span><div><button id="prev" disabled>← Назад</button><span id="page">1 / 1</span><button id="next" disabled>Далее →</button></div></div>
+    </div>
+    <div id="traces-panel" class="detail-panel" hidden><h2>Стек основного потока сервера</h2><p class="hint">Число сэмплов и доля от корня дерева; это не время в миллисекундах.</p><div id="server-traces"></div></div>
+    <div id="diagnostics-panel" class="detail-panel" hidden><h2>Диагностика замера</h2><pre id="diagnostics">Нет данных</pre></div>
+  </section>
+  <section id="selected" class="workspace detail-panel" hidden><h2 id="selected-title"></h2><p id="selected-info"></p><button id="copy-tp">Скопировать команду телепортации</button><div id="entry-traces"></div></section>
+  <footer>Отчёты доступны по прямой ссылке. Локальный файл обрабатывается в браузере.</footer>
+</main>
+</body></html>
